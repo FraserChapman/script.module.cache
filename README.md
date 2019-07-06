@@ -4,15 +4,15 @@
 
 Simple Python HTTP Cache using sqlite3
 
-* Stores cached data in sqlite3.Blobs.
-* Calculates lifetime, freshness as virtual columns.
-* Obeys cache control directives, immutable, no-store, etc.
-* Supports etag, last_modified, etc for conditional requests.
-* Can be used as a generic key/blob data store when used without directives.
+*   Stores cached data in sqlite3.Blobs.
+*   Calculates lifetime, freshness as virtual columns.
+*   Obeys cache control directives, immutable, no-store, etc.
+*   Supports etag, last_modified, etc for conditional requests.
+*   Can be used as a generic key/blob data store when used without directives.
 
 By default the Cache (and Store) use a sqlite3 database named "cache.sqlite" located in the add-on profile directory
 
-# Examples
+## Examples
 
 Quick examples of basic usage 
 
@@ -93,8 +93,10 @@ print(searches.retrieve())  # set()
  
 ~~~~
 
-# References 
+## References 
 
-* [DB-API 2.0 interface for SQLite databases](https://docs.python.org/2/library/sqlite3.html)
-* [RFC7234 - HTTP/1.1 Caching](https://tools.ietf.org/html/rfc7234)
-* [RFC7232 - HTTP/1.1 Conditional Requests](https://tools.ietf.org/html/rfc7232) 
+*   [DB-API 2.0 interface for SQLite databases](https://docs.python.org/2/library/sqlite3.html)
+*   [RFC7234 - HTTP/1.1 Caching](https://tools.ietf.org/html/rfc7234)
+*   [RFC7232 - HTTP/1.1 Conditional Requests](https://tools.ietf.org/html/rfc7232)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/26afc2828d1e439eafd563967a391f5b)](https://www.codacy.com/app/FraserChapman/script.module.cache?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FraserChapman/script.module.cache&amp;utm_campaign=Badge_Grade)
