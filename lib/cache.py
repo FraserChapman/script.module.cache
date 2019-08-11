@@ -55,7 +55,7 @@ def datetime_to_httpdate(input_date):
 
 def conditional_headers(row):
     # type: (sqlite3.Row) -> dict
-    """Creates dict of conditional request headers based on row etag and last_modified"""
+    """Creates conditional request header dict based on etag and last_modified"""
     headers = {}
     if row["etag"] is not None:
         headers["If-None-Match"] = row["etag"]
@@ -92,7 +92,7 @@ class Store(object):
         # type: (set) -> None
         """Saves set of strings"""
         with Cache(self.db) as c:
-            if type(data) is set:
+            if isinstance(data, set):
                 c.set(self.key, data)
 
     def append(self, item):
@@ -267,9 +267,7 @@ class Cache(object):
         sqlite3.enable_callback_tracebacks(True)
         sqlite3.register_converter("BLOB", Blob.deserialise)
         try:
-            self.connection = sqlite3.connect(name,
-                                              timeout=1,
-                                              detect_types=sqlite3.PARSE_DECLTYPES)
+            self.connection = sqlite3.connect(name, timeout=1, detect_types=sqlite3.PARSE_DECLTYPES)
         except sqlite3.Error as e:
             logger.debug(e)
             return
@@ -281,6 +279,9 @@ class Cache(object):
     def _close(self):
         # type: () -> None
         """Closes any open connection and cursor"""
+        # remove module level register_converter 
+        # see: https://github.com/jdf76/plugin.video.youtube/issues/640
+        del sqlite3.converters["BLOB"]  
         if self.connection:
             self.connection.cursor().close()
             self.connection.close()
