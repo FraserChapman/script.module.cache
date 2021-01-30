@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.cache" name="cache" version="1.0.3" provider-name="fraser">
-    <requires>
-        <import addon="xbmc.python" version="2.25.0"/>
-    </requires>
+<addon id="script.module.cache" name="cache" version="1.0.4" provider-name="fraser">
     <extension point="xbmc.python.module" library="lib"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Simple HTTP Cache using sqlite3</summary>
