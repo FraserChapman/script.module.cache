@@ -10,7 +10,6 @@ import time
 from datetime import datetime, timedelta, tzinfo
 from os import path
 
-import xbmc
 import xbmcaddon
 import xbmcvfs
 
@@ -24,7 +23,7 @@ logger = logging.getLogger(__name__)
 HTTP_DATE_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
 ADDON = xbmcaddon.Addon()
 ADDON_PROFILE = ADDON.getAddonInfo("profile").encode("utf-8").decode("utf-8")
-CACHE_URI = xbmc.translatePath(path.join(ADDON_PROFILE, "cache.sqlite"))
+CACHE_URI = xbmcvfs.translatePath(path.join(ADDON_PROFILE, "cache.sqlite"))
 
 
 def httpdate_to_datetime(input_date):
